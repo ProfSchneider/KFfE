@@ -1,7 +1,7 @@
 %****************************************************************
 % Modul	          : LeseSpannung                                *
 %                                                               *
-% Datum           : 08-Okt-2013                                 *
+% Datum           : 13. September 2016                          *
 %                                                               *
 % Funktion        : Zufällige Spannungswerte werden simuliert   *
 %                                                               *
