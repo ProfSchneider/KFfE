@@ -32,7 +32,7 @@ if isempty(bErsterDurchlauf)
   Q = 0; % Kovarianzmatrix des Systemrauschens
   R = 4; % Kovarianzmatrix des Messrauschens
 
-  x = 14; % in V aktueller Wert
+  x = 14; % in V, initiale Schätzung
   P =  6; % Kovarianzmatrix des Schätzfehlers
   
   bErsterDurchlauf = 1;  

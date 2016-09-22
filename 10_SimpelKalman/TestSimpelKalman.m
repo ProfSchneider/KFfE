@@ -16,7 +16,7 @@
 %                                                               *
 %***************************************************************/
 
-clear all
+clear all; close all; clc
 
 dt = 0.2;     % Simulationsschritte in s
 t  = 0:dt:10;
