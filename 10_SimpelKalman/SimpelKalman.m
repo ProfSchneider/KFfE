@@ -38,7 +38,7 @@ if isempty(bErsterDurchlauf)
   bErsterDurchlauf = 1;  
 end
 
-%% Prädiktionsschritt  
+%% Prädiktionsprozess 
 % 1. Vorhersage des Zustandsvektors und der Kovarianz
 xp = A*x;            % Prädiktion der Schätzung
 Pp = A*P*A' + Q;     % Prädiktion der Fehlerkovarianz
