@@ -7,8 +7,8 @@
 %                                                               *
 % Implementation  : MATLAB 2016a                  			    *
 %                                                               *
-% Author          : Phil Kim                                    *
-%                   Bearbeitet von Prof. Schneider              *
+% Author          : (c) 2011 Phil Kim, Alle Rechte vorbehalten. *
+%                   Bearbeitet von Prof. Ulrich Schneider       *
 %                                                               *
 % Bemerkung       : https://github.com/philbooks/               *
 %                                                               *
