@@ -11,7 +11,8 @@
 % Author          : (c) 2011 Phil Kim, Alle Rechte vorbehalten. *
 %                   Bearbeitet von Prof. Schneider              *
 %                                                               *
-% Bemerkung       : https://github.com/philbooks/               *
+% Original        : https://github.com/philbooks/               *
+% Quelle          : https://github.com/ProfSchneider/KFfE/      *
 %                                                               *
 % Letzte Änderung : 23. September 2016                          *
 %                                                               *
