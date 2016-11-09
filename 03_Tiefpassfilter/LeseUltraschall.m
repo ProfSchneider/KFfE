@@ -1,5 +1,5 @@
 %****************************************************************
-% Modul	          : LadeUltraschall(x)                          *
+% Modul	          : LeseUltraschall(x)                          *
 %                                                               *
 % Datum           : 08-Okt-2013                                 *
 %                                                               *
@@ -18,7 +18,7 @@
 %                                                               *
 %***************************************************************/
 
-function h = LadeUltraschall()
+function h = LeseUltraschall()
 %
 %
 persistent Ultraschallmessung       % Ultraschallmessung.mat
