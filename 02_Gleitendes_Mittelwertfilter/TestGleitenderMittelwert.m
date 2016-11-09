@@ -27,7 +27,7 @@ aXmsaved  = zeros(nSamples, 1);
 
 % Schleife über alle Messwerte
 for k=1:nSamples
-  xm = LadeUltraschall(); 
+  xm = LeseUltraschall(); 
   %x  = RekGleitenderMittelwert(xm); % rekursive Funktion
   x  = GleitenderMittelwert(xm);
   
