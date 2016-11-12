@@ -17,7 +17,7 @@
 %                                                               *
 %***************************************************************/
 
-function Spannung = SimpelKalman(z)
+function [Spannung Cov Kg] = SimpelKalman2(z)
 %
 %
 persistent A C Q R 
@@ -53,5 +53,7 @@ x = xp + K*(z - C*xp);
 % 4. Korrektur der Kovarianzschätzung
 P = Pp - K*C*Pp;
 
-%% Rückgabewert ist die Zustandsschätzung
+%% Rückgabewerte
 Spannung = x;
+Cov      = P;
+Kg       = K;

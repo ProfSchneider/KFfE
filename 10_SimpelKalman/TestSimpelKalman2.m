@@ -24,22 +24,32 @@ t  = 0:dt:10; % Zeitachse als Array
 
 nSamples = length(t);
 
-Xsaved = zeros(nSamples, 1);
+Xsaved = zeros(nSamples, 3);
 Zsaved = zeros(nSamples, 1);
 
 for k=1:nSamples
-  z        = LeseSpannung();  % Messwerte lesen
-  Spannung = SimpelKalman(z); % Kalman-Filter
+  z        = LeseSpannung();        % Messwerte lesen
+  [Spannung P K] = SimpelKalman2(z); % Kalman-Filter
   
-  % Messwerte speichern
-  Xsaved(k) = Spannung;
+  % Werte speichern
+  Xsaved(k,:) = [Spannung P K];
   Zsaved(k) = z;
 end
 
 figure
 hold on
-plot(t, Xsaved, 'o-')
 plot(t, Zsaved, 'r:.') 
+plot(t, Xsaved(:,1), 'o-')
 legend('Messwerte','Kalman-Filter Schätzung')
 xlabel('Zeit in s')
 ylabel('Batteriespannung in V')
+
+figure
+plot(t, Xsaved(:,2), 'o-')
+xlabel('Zeit in s')
+ylabel('Fehlerkovarianz in V^2')
+
+figure
+plot(t, Xsaved(:,3), 'o-')
+xlabel('Zeit in s')
+ylabel('Kalman-Verstärkung K')

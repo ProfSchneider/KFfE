@@ -42,7 +42,7 @@ figure
 hold on
 plot(t, aXmsaved, 'r.');
 plot(t, aXsaved, 'b');
-
+legend('Messwerte', 'Tiefpassfilter', 'Location', 'E')
 xlabel('Zeit in s')
 ylabel('Distanz in m')
-legend('Messwert', 'Tiefpassfilter')
+
