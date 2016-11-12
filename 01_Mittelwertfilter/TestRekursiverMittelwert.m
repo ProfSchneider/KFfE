@@ -18,32 +18,29 @@
 %                                                               *
 %***************************************************************/
 
-clear all; close all; clc
+clear all; close all; clc; % MATLAB Initialisierung
 
-%% Initialisierung
-dt = 0.2;
-t  = 0:dt:10;
+dt = 0.2;      % Abtastzeit
+t  = 0:dt:10;  % Zeitachse als Array
+nSamples = length(t); % Anz. der Messwerte
 
-Nsamples = length(t);
+% Speicherplatz reservieren
+aMittelwert = zeros(nSamples, 1);
+aXm  = zeros(nSamples, 1);  
 
-%% Ergebnisvektoren
-aMittelwert = zeros(Nsamples, 1);
-aXm  = zeros(Nsamples, 1);  
-
-%% Hauptschleife
-for k=1:Nsamples
-  xm  = LeseSpannung(); % Zufallswerte laden
-  Mittelwert = RekursiverMittelwert(xm);
+%%  Hauptschleife über alle Messwerte
+for k=1:nSamples
+  xm         = LeseSpannung(); % Messung
+  Mittelwert = RekursiverMittelwert(xm); % Filter
   
   % Messwerte speichern
   aMittelwert(k) = Mittelwert;
-  aXm(k)  = xm;
+  aXm(k)         = xm;
 end
 
-
-figure(1)
-plot(t, aXm, 'r:*')
+figure
 hold on
+plot(t, aXm, 'r:.')
 plot(t, aMittelwert, 'o-')
 line([0,10],[14.4,14.4],'Color',[.5 .5 .5])
 xlabel('Zeit in s')

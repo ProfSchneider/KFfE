@@ -24,7 +24,7 @@ function Mittelwert = RekursiverMittelwert(x)
 persistent fVorherigerMittelwert k 
 persistent bErsterDurchlauf
 
-%% Initalisierung der Variablen bei ertsen Durchlauf
+%% Initalisierung der Variablen bei ersten Durchlauf
 if isempty(bErsterDurchlauf)
   k = 1;
   fVorherigerMittelwert = 0;
