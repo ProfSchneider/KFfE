@@ -6,7 +6,7 @@
 % Funktion        : Tiefpassfilter 1. Ordnung mit fester        * 
 %                   Wichtung                                    *
 %                                                               *
-% Implementation  : MATLAB R20136a                               *
+% Implementation  : MATLAB R2016a                               *
 %                                                               *
 % Author          : (c) 2011 Phil Kim, Alle Rechte vorbehalten. *
 %                   Bearbeitet von Prof. Schneider              *
@@ -23,7 +23,7 @@ function xTPF = Tiefpass(x)
 persistent vorherigesX alpha
 persistent bErsterDurchlauf
 
-%% Beim ersten Durchlauf Initialisierung
+%% Initalisierung der Variablen bei ersten Durchlauf
 if isempty(bErsterDurchlauf)
   vorherigesX = x;     
   alpha = 0.7;  % Wichtung (Parameter)

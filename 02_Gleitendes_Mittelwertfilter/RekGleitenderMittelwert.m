@@ -23,9 +23,9 @@ function RGM = RekGleitenderMittelwert(x)
 persistent vorherigerRGM n aSchieberegister
 persistent bErsterDurchlauf
 
-%% Initialisierung des Array
+%% Initalisierung der Variablen bei ersten Durchlauf
 if isempty(bErsterDurchlauf)
-  n    = 10; % gleitendes mittelwertfilter über 10 Werte
+  n    = 10; % gleitender Mittelwert über 10 Werte
   aSchieberegister = x*ones(n+1, 1);
   
   k = 1;

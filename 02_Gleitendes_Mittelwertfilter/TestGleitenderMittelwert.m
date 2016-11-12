@@ -18,32 +18,32 @@
 %                                                               *
 %***************************************************************/
 
-clear all; close all; clc % Matlab vorbereiten
+clear all; close all; clc % MATLAB vorbereiten
 
+nSamples = 1500; % Anzahl der Messwerte max. 1501 (Default: 500)
 
-nSamples = 1500; % Anzahl der Messwerte max 1501 (Default: 500)
 % Speicherplatz reservieren
 aXsaved   = zeros(nSamples, 1);
 aXmsaved  = zeros(nSamples, 1);
 
 % Schleife über alle Messwerte
 for k=1:nSamples
-  xm = LeseUltraschall(); 
+  xm = LeseUltraschall(); % Messung laden
   %x  = RekGleitenderMittelwert(xm); % rekursive Funktion
-  x  = GleitenderMittelwert(xm);
+  x  = GleitenderMittelwert(xm); % Filter
   
+  % Messwerte speichern
   aXsaved(k)  = x;
   aXmsaved(k) = xm;
 end
 
-% Zeitachse zeichnen
-dt = 0.02;                %Abtastzeit
-t  = 0:dt:nSamples*dt-dt;
+dt = 0.02;                % Abtastzeit in s
+t  = 0:dt:nSamples*dt-dt; % Zeitachse als Array
 
 figure
 hold on
 plot(t, aXmsaved, 'r.');
-plot(t, aXsaved, 'b');
+plot(t, aXsaved, 'b-');
 
 xlabel('Zeit in s')
 ylabel('Distanz in m')

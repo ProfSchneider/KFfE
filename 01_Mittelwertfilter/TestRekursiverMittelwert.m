@@ -18,9 +18,9 @@
 %                                                               *
 %***************************************************************/
 
-clear all; close all; clc; % MATLAB Initialisierung
+clear all; close all; clc; % MATLAB vorbereiten
 
-dt = 0.2;      % Abtastzeit
+dt = 0.2;      % Abtastzeit in s
 t  = 0:dt:10;  % Zeitachse als Array
 nSamples = length(t); % Anz. der Messwerte
 

@@ -21,7 +21,7 @@
 function h = LeseUltraschall()
 %
 %
-persistent Ultraschallmessung       % Ultraschallmessung.mat
+persistent Ultraschallmessung       % Var. in Ultraschallmessung.mat
 persistent k bErsterDurchlauf
 
 
