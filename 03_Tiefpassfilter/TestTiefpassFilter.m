@@ -35,8 +35,8 @@ for k=1:nSamples
   aXmsaved(k) = xm;
 end
 
-dt = 0.02;                % Abtastzeit in s
-t  = 0:dt:nSamples*dt-dt; % Zeitachse als Array
+dt = 0.02;                    % Abtastzeit in s
+t  = 0:dt:(nSamples*dt - dt); % Zeitachse als Array
 
 figure
 hold on

@@ -28,7 +28,7 @@ Xsaved = zeros(nSamples, 3);
 Zsaved = zeros(nSamples, 1);
 
 for k=1:nSamples
-  z        = LeseSpannung();        % Messwerte lesen
+  z   = LeseSpannung();              % Messwerte lesen
   [Spannung P K] = SimpelKalman2(z); % Kalman-Filter
   
   % Werte speichern
