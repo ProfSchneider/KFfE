@@ -1,11 +1,12 @@
 %****************************************************************
-% Modul			  : SimpleKalman.m               	            *
+% Modul			  : IntKalman.m                                 *
 %				                            					*
-% Datum           : 13. September 2016                          *
+% Datum           : 18-Nov-2013                                 *
 %                                                               *
-% Funktion        : Kalman-Filter Algorithmus                   *
+% Funktion        : Kalman-Filter für die Positionsschätzung    *
+%                   eines Zuges anhand der Geschwindigkeits     *
 %                                                               *
-% Implementation  : MATLAB 2013a                  			    *
+% Implementation  : MATLAB R2016a                               *
 %                                                               *
 % Author          : (c) 2011 Phil Kim, Alle Rechte vorbehalten. *
 %                   Bearbeitet von Prof. Schneider              *
@@ -16,44 +17,40 @@
 % Letzte Änderung : 13. September 2016                          *
 %                                                               *
 %***************************************************************/
-
-function [Spannung Cov Kg] = SimpelKalman2(z)
+function [pos vel] = IntKalman(z)
 %
 %
+global dt % Abtastzeit in s
 persistent A H Q R 
 persistent x P
 persistent bErsterDurchlauf
 
 %% Initalisierung der Variablen bei ersten Durchlauf
 if isempty(bErsterDurchlauf)
-  A = 1; % Systemmatrix der linearen Zustandsraumdarstellung
-  H = 1; % Ausgangsmatrix der linearen Zustandsraumdarstellung
+  A = [ 1 dt;
+        0 1 ];
+  H = [ 0 1 ]; % ÄNDERUNG! Geschwindigkeitsmessung anstelle der Pos. [1 0]
   
-  Q = 0; % Kovarianzmatrix des Systemrauschens
-  R = 4; % Kovarianzmatrix des Messrauschens
+  Q = [ 1 0;
+        0 3 ];
+  R = 10;
 
-  x = 14; % in V, initiale Schätzung
-  P =  6; % Kovarianzmatrix des Schätzfehlers
+  x = [ 0 20 ]';
+  P = 5*eye(2);
   
-  bErsterDurchlauf = 1;  
+  bErsterDurchlauf = 1;
 end
 
-%% Prädiktionsprozess 
-% 1. Vorhersage des Zustandsvektors und der Kovarianz
-xp = A*x;            % Prädiktion der Schätzung
-Pp = A*P*A' + Q;     % Prädiktion der Fehlerkovarianz
+%% Prädiktion  
+xp = A*x;  
+Pp = A*P*A' + Q;    
 
-%% Schätzprozess
-% 2. Berechnung der Kalman-Verstärkung K
+%% Schätzung
 K = Pp*H'*inv(H*Pp*H' + R);
 
-% 3. Korrektur der Zustandsschätzung
 x = xp + K*(z - H*xp);
-
-% 4. Korrektur der Kovarianzschätzung
-P = Pp - K*H*Pp;
+P = Pp - K*H*Pp;   
 
 %% Rückgabewerte
-Spannung = x;
-Cov      = P;
-Kg       = K;
+pos = x(1);
+vel = x(2);
