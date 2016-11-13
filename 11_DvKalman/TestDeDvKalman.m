@@ -34,6 +34,7 @@ Xsaved   = zeros(nSamples, 2);
 DeXsaved = zeros(nSamples, 2);
 Zsaved   = zeros(nSamples, 1);
 
+%% Schleife über alle Messwerte
 for k=1:nSamples
   z = LesePos();               % Messwerte lesen
   [pos vel]   = DvKalman(z);   % Inverse Matrizenrechnung
