@@ -19,7 +19,7 @@
 
 clear all; close all; clc; % MATLAB vorbereiten
 
-nAnzahlBilder = 24; % max. 24 Bilder
+nAnzahlBilder = 24; % max. 24 Bilder verfügbar
 
 %% Speicherplatz reservieren
 Xmsaved = zeros(2, nAnzahlBilder);
