@@ -1,0 +1,50 @@
+%****************************************************************
+% Modul			  : TestTrackKalman.m                           *
+%				                            					*
+% Datum           : 02-Dez-2013                                 *
+%                                                               *
+% Funktion        : 2D-Kalman Filter (Startfunktion)            *
+%                                                               *
+% Implementation  : MATLAB 2016a                  			    *
+%                                                               *
+% Author          : (c) 2011 Phil Kim, Alle Rechte vorbehalten. *
+%                   Bearbeitet von Prof. Schneider              *
+%                                                               *
+% Original        : https://github.com/philbooks/               *
+% Quelle          : https://github.com/ProfSchneider/KFfE/      *
+%                                                               *
+% Letzte Änderung : 13. November 2016                           *
+%                                                               *
+%***************************************************************/
+
+clear all; close all; clc; % MATLAB vorbereiten
+
+nAnzahlBilder = 24; % max. 24 Bilder
+
+Xmsaved = zeros(2, nAnzahlBilder);
+Xhsaved = zeros(2, nAnzahlBilder);
+
+for k = 1:nAnzahlBilder
+  [xm, ym] = LeseBallPos(k);        % Bildverarbeitung
+  [xh, yh] = TrackKalman(xm, ym);   % 2D-Kalman-Filter
+      
+  hold on
+  plot(xm, ym, 'r*')
+  plot(xh, yh, 'bs')
+  
+  pause(1)
+  
+  Xmsaved(:, k) = [xm ym]';
+  Xhsaved(:, k) = [xh yh]';
+
+end
+
+
+figure
+hold on
+plot(Xmsaved(1,:), Xmsaved(2,:), '*')
+plot(Xhsaved(1,:), Xhsaved(2,:), 's')
+xlabel('x in Pixel')
+ylabel('y in Pixel')
+set(gca,'yDir','reverse')
+legend('Messwerte','Kalman-Filter Schätzung','Location','Best')

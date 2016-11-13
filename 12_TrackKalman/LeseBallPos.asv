@@ -1,0 +1,58 @@
+%****************************************************************
+% Modul			  : LeseBallPos.m                               *
+%				                            					*
+% Datum           : 18-Nov-2013                                 *
+%                                                               *
+% Funktion        : Bildverarbeitung liefert Position eines     *
+%                   Balls                                       *
+%                                                               *
+% Implementation  : MATLAB 2016a                  			    *
+%                                                               *
+% Author          : (c) 2011 Phil Kim, Alle Rechte vorbehalten. *
+%                   Bearbeitet von Prof. Schneider              *
+%                                                               *
+% Original        : https://github.com/philbooks/               *
+% Quelle          : https://github.com/ProfSchneider/KFfE/      *
+%                                                               *
+% Letzte ƒnderung : 13. November 2016                           *
+%                                                               *
+%***************************************************************/
+
+function [xc, yc] = LeseBallPos(index)
+%
+%
+persistent imgBg
+persistent bErsterDurchlauf
+
+%% Initalisierung der Variablen bei ersten Durchlauf
+if isempty(bErsterDurchlauf)
+  imgBg = imread('Img/bg.jpg'); % Hintergrund
+  
+  bErsterDurchlauf = 1;
+end
+
+xc = 0;
+yc = 0;
+  
+imgWork = imread(['Img/', int2str(index), '.jpg']); 
+imshow(imgWork)
+
+fore = imabsdiff(imgWork, imgBg); % Ball ohne Hintergrund
+
+%% Schwellwertbehandlung
+fore = (fore(:,:,1) > 10) | (fore(:,:,2) > 10) | (fore(:,:,3) > 10);
+
+% Weiﬂer Ball auf schwarzem Grund
+L     = logical(fore);
+
+%% Region Labeling
+stats = regionprops(L, 'area', 'centroid');
+area_vector = [stats.Area];
+[tmp, idx] = max(area_vector);
+
+centroid = stats(idx(1)).Centroid;
+
+%% Positionsrauschen
+xc = centroid(1) + 15*randn;
+yc = centroid(2) + 15*randn;
+  
