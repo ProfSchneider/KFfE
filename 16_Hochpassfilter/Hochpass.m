@@ -27,7 +27,7 @@ persistent prevU
 persistent tau
 persistent bErsterDurchlauf
 
-
+%% Initalisierung der Variablen bei ersten Durchlauf
 if isempty(bErsterDurchlauf)
   prevX = 0;
   prevU = 0;
