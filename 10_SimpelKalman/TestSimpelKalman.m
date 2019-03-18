@@ -38,8 +38,8 @@ end
 
 figure
 hold on
-plot(t, Xsaved, 'o-')
 plot(t, Zsaved, 'r:.') 
+plot(t, Xsaved, 'o-')
 legend('Messwerte','Kalman-Filter Schätzung')
 xlabel('Zeit in s')
 ylabel('Batteriespannung in V')
