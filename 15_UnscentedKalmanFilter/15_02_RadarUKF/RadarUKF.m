@@ -16,25 +16,6 @@
 % Letzte Änderung : 13. November 2016                           *
 %                                                               *
 %***************************************************************/
-%****************************************************************
-% Modul			  : RadarUKF.m                                  *
-%				                            					*
-% Datum           : 18-Nov-2013                                 *
-%                                                               *
-% Funktion        : Unscented Kalman-Filter                     *
-%                                                               *
-% Implementation  : MATLAB 2016a                  			    *
-%                                                               *
-% Author          : (c) 2011 Phil Kim, Alle Rechte vorbehalten. *
-%                   Bearbeitet von Prof. Schneider              *
-%                                                               *
-% Original        : https://github.com/philbooks/               *
-% Quelle          : https://github.com/ProfSchneider/KFfE/      *
-%                                                               *
-% Letzte Änderung : 13. November 2016                           *
-%                                                               *
-%***************************************************************/
-
 function [pos vel alt] = RadarUKF(z, dt)
 %
 %
