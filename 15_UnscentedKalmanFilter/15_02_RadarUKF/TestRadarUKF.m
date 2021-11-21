@@ -4,7 +4,7 @@
 % Datum           : 02-Dez-2013                                 *
 %                                                               *
 % Funktion        : Startfunktion der Simulation der Radardaten *
-%                   für ein Radar UKF                           *
+%                   fÃ¼r ein Radar UKF                           *
 %                                                               *
 % Implementation  : MATLAB 2016a                  			    *
 %                                                               *
@@ -14,7 +14,7 @@
 % Original        : https://github.com/philbooks/               *
 % Quelle          : https://github.com/ProfSchneider/KFfE/      *
 %                                                               *
-% Letzte Änderung : 13. November 2016                           *
+% Letzte Ã„nderung : 13. November 2016                           *
 %                                                               *
 %***************************************************************/
 
@@ -28,7 +28,7 @@ t = 0:dt:(nSamples*dt - dt);  % Zeitachse als Array
 Xsaved = zeros(nSamples, 3);
 Zsaved = zeros(nSamples, 1);
 
-%% Schleife über alle Messwerte
+%% Schleife Ã¼ber alle Messwerte
 for k=1:nSamples
   r = LeseRadar(dt);               % Messdaten laden
   [pos vel alt] = RadarUKF(r, dt); % UKF
@@ -46,22 +46,25 @@ figure
 hold on
 line([0 20],[0 2000],'Color',[1 0 0])
 plot(t, PosSaved)
-legend('Wahrer Wert','EKF Schätzung','Location','Best')
+legend('Wahrer Wert','EKF SchÃ¤tzung','Location','Best')
 xlabel('Zeit in s')
-ylabel('x-Position in m')
+ylabel('Horizontale Entfernung in m')
+legend('Wahrer Wert','UKF SchÃ¤tzung','Location','Best')
 
 figure
 hold on
 line([0 20],[100 100],'Color',[1 0 0])
 plot(t, VelSaved)
 xlabel('Zeit in s')
-ylabel('Höhe in m')
-legend('Wahrer Wert','EKF Schätzung','Location','Best')
+ylabel('Horizontale Geschwindigkeit in m/s')
+legend('Wahrer Wert','UKF SchÃ¤tzung','Location','Best')
 
 figure
 hold on
+line([0 20],[1000 1000],'Color',[1 0 0])
 plot(t, AltSaved)
-plot(t, zp,'b-')
 xlabel('Zeit in s')
-ylabel('Schrägentfernung in m')
-legend('Simulierte Messwerte','EKF Schätzung','Location','Best')
+ylabel('SchrÃ¤gentfernung in m')
+ylabel('HÃ¶he in m')
+legend('Wahrer Wert','UKF SchÃ¤tzung','Location','Best')
+ylim([990 1050])
