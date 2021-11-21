@@ -14,7 +14,7 @@
 % Original        : https://github.com/philbooks/               *
 % Quelle          : https://github.com/ProfSchneider/KFfE/      *
 %                                                               *
-% Letzte Änderung : 13. November 2016                           *
+% Letzte Änderung : 21. November 2021                           *
 %                                                               *
 %***************************************************************/
 
