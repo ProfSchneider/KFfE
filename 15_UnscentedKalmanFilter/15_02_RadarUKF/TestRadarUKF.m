@@ -1,12 +1,12 @@
 %****************************************************************
-% Modul			  : TestRadarUKF.m                              *
-%				                            					*
+% Modul			  :     TestRadarUKF.m                              *
+%				                            				                  	*
 % Datum           : 02-Dez-2013                                 *
 %                                                               *
 % Funktion        : Startfunktion der Simulation der Radardaten *
 %                   für ein Radar UKF                           *
 %                                                               *
-% Implementation  : MATLAB 2016a                  			    *
+% Implementation  : MATLAB 2016a                  			        *
 %                                                               *
 % Author          : (c) 2011 Phil Kim, Alle Rechte vorbehalten. *
 %                   Bearbeitet von Prof. Schneider              *
