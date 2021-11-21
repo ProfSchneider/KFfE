@@ -13,7 +13,7 @@
 % Original        : https://github.com/philbooks/               *
 % Quelle          : https://github.com/ProfSchneider/KFfE/      *
 %                                                               *
-% Letzte Änderung : 13. November 2016                           *
+% Letzte Ã„nderung : 13. November 2016                           *
 %                                                               *
 %***************************************************************/
 
@@ -42,7 +42,7 @@ if isempty(bErsterDurchlauf )
   bErsterDurchlauf  = 1;  
 end
 
-%% Prädiktion
+%% PrÃ¤diktion
 [Xi W] = SigmaPunkte(x, P, 0);
 
 fXi = zeros(n, 2*n+1);
@@ -53,10 +53,10 @@ end
 [xp Pp] = UT(fXi, W, Q);
 %norm(xp - fx(x, dt))
 
-%% Schätzung
+%% SchÃ¤tzung
 hXi = zeros(m, 2*n+1);
 for k = 1:2*n+1
-  hXi(:, k) = cx(fXi(:,k));
+  hXi(:, k) = hx(fXi(:,k));
 end
 
 [zp Pz] = UT(hXi, W, R);
@@ -72,7 +72,7 @@ K = Pxz*inv(Pz);
 x = xp + K*(z - zp);
 P = Pp - K*Pz*K';
 
-%% Rückgabewerte 
+%% RÃ¼ckgabewerte 
 pos = x(1);
 vel = x(2);
 alt = x(3);
@@ -86,7 +86,7 @@ A = eye(3) + dt*[ 0 1 0;
                   0 0 0;
                   0 0 0 ];  
 
-xp = A*x; % Prädiktion
+xp = A*x; % PrÃ¤diktion
 
 
 
